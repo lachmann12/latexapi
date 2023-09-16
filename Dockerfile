@@ -27,7 +27,8 @@ RUN pip3 install -r requirements.txt
 RUN sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-6/policy.xml
 
 COPY main.py /latex
+ADD static /latex/static
 
 EXPOSE 5050
 
-#ENTRYPOINT ["uvicorn", "main:app", "--port", "5050", "--host", "0.0.0.0"]
+ENTRYPOINT ["uvicorn", "main:app", "--port", "5557", "--host", "0.0.0.0"]
